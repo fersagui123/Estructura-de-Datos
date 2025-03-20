@@ -3,8 +3,8 @@ import java.util.Stack;
 import java.util.ArrayList;
 
 public class EditorTexto {
-    private Stack<String> texto;
-    private Stack<String> deshechos;
+    private Stack<String> texto;   // Pila que almacena lineas del texto.
+    private Stack<String> deshechos;  // Pila que almacena lineas eliminadas.
 
     public EditorTexto(){
         this.texto = new Stack<>();
@@ -16,7 +16,7 @@ public class EditorTexto {
         deshechos.clear();
     }
 
-    public void deshacer(){
+    public void deshacer(){    // Deshace la última acción realizada.
         if (!texto.isEmpty()) {
             deshechos.push(texto.pop());
         } else {
@@ -24,7 +24,7 @@ public class EditorTexto {
         }
     }
     
-    public void rehacer() {
+    public void rehacer() {   // Rehace la última acción desecha.
         if (!deshechos.isEmpty()){
             texto.push(deshechos.pop());
         } else {
@@ -32,7 +32,7 @@ public class EditorTexto {
         }
     }
 
-    public void mostrar() {
+    public void mostrar() {    //Muestra el contenido actual del editor de texto.
         if (texto.isEmpty()) {
             System.out.println("Texto vacío");    
         } else {
@@ -44,7 +44,7 @@ public class EditorTexto {
         }
     }
 
-    public void ejecutar(){
+    public void ejecutar(){   //Método principal de ejecución del editor de texto.
         Scanner scanner = new Scanner(System.in);
         System.out.println("Editor de texto iniciado. Comandos válidos: Deshacer, Rehacer, Mostrar, Salir");
         System.out.println("Escribe texto para agregar una línea o un comando para ejecutar una acción:");
